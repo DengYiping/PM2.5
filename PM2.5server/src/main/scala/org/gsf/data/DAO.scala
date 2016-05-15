@@ -4,11 +4,9 @@ import java.util
 
 import com.mongodb.{MongoClientURI, MongoClient}
 import org.bson._
-import org.gsf.main.SystemObject
 /**
   * Created by Scott on 5/9/16.
   */
-import SystemObject.system
 abstract class DAO {
   def store(time:Long,pm2_5:Double,lng:Double,lat:Double,client:String):Boolean
   /*
