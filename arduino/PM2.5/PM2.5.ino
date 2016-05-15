@@ -13,7 +13,7 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 
-#define REFVOLT 760
+#define REFVOLT 600
 int count = 0;
 float averageP = 0; // reading of DN7C3
 float valueP = 0;
