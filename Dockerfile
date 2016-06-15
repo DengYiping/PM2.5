@@ -6,7 +6,9 @@ MAINTAINER Yiping Deng <scottdeng@live.cn>
 RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 
 # Add a repo where OpenJDK can be found.
-RUN apt-get install -y --force-yes wget software-properties-common
+RUN apt-get update
+RUN apt-get upgrade
+RUN apt-get install -y git wget software-properties-common
 RUN add-apt-repository -y ppa:webupd8team/java
 RUN apt-get update
 
@@ -17,8 +19,6 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 RUN apt-get install -y --force-yes oracle-java8-installer
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-#Install git and wget
-RUN apt-get install -y git wget
 
 # Install Scala
 ENV SCALA_VERSION 2.11.7
