@@ -14,5 +14,5 @@ object MyApp extends App{
   implicit val system = ActorSystem("ShuoshuoCrawlerSystem")
   val service=system.actorOf(Props(new WebServiceActor),"WebService")
   implicit val timeout=Timeout(5.seconds)
-  IO(Http) ? Http.Bind(service,interface="0.0.0.0",port=8080)
+  IO(Http) ? Http.Bind(service,interface="0.0.0.0",port=8008)
 }
