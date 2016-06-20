@@ -61,4 +61,21 @@ object DAO{
     }
     new MongoDAO
   }
+  def mongo(addr:String, port:String):DAO = {
+    class MongoDAO extends DAO{
+      val client = new MongoClient(new MongoClientURI("mongodb://" + addr + ":" + port))
+      val collection = client.getDatabase("gsf").getCollection("airquality")
+      def store(time:Long,pm2_5:Double,lng:Double,lat:Double,client:String):Boolean = {
+        val data = new Document()
+          .append("time",time)
+          .append("pm2_5",pm2_5)
+          .append("client",client)
+          .append("geo",new Document()
+            .append("lat",lat).append("lng",lng)
+          )
+        collection.insertOne(data)
+        true
+      }
+    }
+  }
 }
