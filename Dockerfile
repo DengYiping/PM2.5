@@ -41,4 +41,4 @@ RUN git clone https://github.com/DengYiping/PM2.5.git
 WORKDIR PM2.5/PM2.5server
 RUN sbt compile
 EXPOSE 8008
-ENTRYPOINT ["sbt run"]
+CMD ["sbt run"]
