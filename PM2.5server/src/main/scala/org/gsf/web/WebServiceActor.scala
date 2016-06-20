@@ -7,7 +7,7 @@ class WebServiceActor extends WebService{
   val superviser = context.parent
   def actorRefFactory = context
   def receive = runRoute(route)
-  val addr = javaHome = System.getenv("MONGODB_PORT_27017_TCP_ADDR")
-  val port = javaHome = System.getenv("MONGODB_PORT_27017_TCP_PORT")
+  val addr = System.getenv("MONGODB_PORT_27017_TCP_ADDR")
+  val port = System.getenv("MONGODB_PORT_27017_TCP_PORT")
   val dao = DAO.mongo(addr, port)
 }

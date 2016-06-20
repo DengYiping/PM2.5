@@ -44,7 +44,7 @@ object DAO{
   }
   */
   def mongo:DAO = {
-    class MongoDAO extends DAO{
+    class MongoDAO1 extends DAO{
       val client = new MongoClient(new MongoClientURI("mongodb://127.0.0.1:27017"))
       val collection = client.getDatabase("gsf").getCollection("airquality")
       def store(time:Long,pm2_5:Double,lng:Double,lat:Double,client:String):Boolean = {
@@ -59,11 +59,11 @@ object DAO{
         true
       }
     }
-    new MongoDAO
+    new MongoDAO1
   }
   def mongo(addr:String, port:String):DAO = {
-    class MongoDAO extends DAO{
-      val client = new MongoClient(new MongoClientURI("mongodb://" + addr + ":" + port))
+    class MongoDAO2(address:String, port_num:String) extends DAO{
+      val client = new MongoClient(new MongoClientURI("mongodb://" + address + ":" + port_num))
       val collection = client.getDatabase("gsf").getCollection("airquality")
       def store(time:Long,pm2_5:Double,lng:Double,lat:Double,client:String):Boolean = {
         val data = new Document()
@@ -77,5 +77,6 @@ object DAO{
         true
       }
     }
+    new MongoDAO2(addr,port)
   }
 }
